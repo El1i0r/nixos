@@ -111,6 +111,8 @@
     wget
     pkgs.neovim
     pkgs.wget
+    pkgs.python312Packages.pip
+    pkgs.jetbrains.gateway
     pkgs.git
     pkgs.rPackages.curl
     pkgs.starship
