@@ -144,6 +144,7 @@
     pkgs.xcbutilxrm
     pkgs.libstartup_notification
     pkgs.cairo
+    pkgs.python312Packages.django
     pkgs.dbus
     pkgs.asciidoctor
     pkgs.librsvg
