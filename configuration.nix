@@ -61,7 +61,9 @@
       variant = "";
     };
   };
-
+  #eh no
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
