@@ -127,6 +127,13 @@
     pkgs.jetbrains.pycharm-community-src
     pkgs.jetbrains-toolbox
     pkgs.python3
+    #gnomies
+    pkgs.gnome-tweaks
+    pkgs.gnomeExtensions.tweaks-in-system-menu
+    pkgs.gnomeExtensions.blur-my-shell
+    pkgs.gnomeExtensions.arcmenu
+    pkgs.gnomeExtensions.desktop-icons-ng-ding
+    #other idiocy
     pkgs.alacritty
     pkgs.luajit
     pkgs.scrot
