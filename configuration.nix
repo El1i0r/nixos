@@ -114,6 +114,10 @@
     pkgs.python312Packages.pip
     pkgs.jetbrains.gateway
     pkgs.git
+    pkgs.python312Packages.django
+    pkgs.sassc
+    pkgs.gtk-engine-murrine
+    pkgs.gnome-themes-extra
     pkgs.rPackages.curl
     pkgs.starship
     pkgs.zsh-autosuggestions
