@@ -150,6 +150,7 @@
     pkgs.xorg.xcbutilerrors
     pkgs.xorg.xcbutil
     pkgs.xorg.fontutil
+    pkgs.obs-studio
     pkgs.xcb-util-cursor
     pkgs.wmutils-opt
     pkgs.wmutils-libwm
