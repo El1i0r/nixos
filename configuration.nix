@@ -117,6 +117,7 @@
     pkgs.python312Packages.pip
     pkgs.jetbrains.gateway
     pkgs.git
+    pkgs.virt-manager
     pkgs.python312Packages.django
     pkgs.sassc
     pkgs.gtk-engine-murrine
