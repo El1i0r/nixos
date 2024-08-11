@@ -23,7 +23,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking.hostName = "ORBIUM-A5"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
+  services.flatpak.enable = true;
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
   # Configure network proxy if necessary
