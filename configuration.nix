@@ -137,6 +137,10 @@
     pkgs.gnomeExtensions.arcmenu
     pkgs.gnomeExtensions.desktop-icons-ng-ding
     #other idiocy
+    pkgs.zed-editor
+    btop
+    acpi
+    killall
     pkgs.alacritty
     pkgs.luajit
     pkgs.scrot
