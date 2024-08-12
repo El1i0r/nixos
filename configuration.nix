@@ -56,17 +56,6 @@
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;
-    windowManager.awesome = {
-      enable = true;
-      extraSession = ''
-        [Desktop Entry]
-        Name=Awesome
-        Comment=Highly configurable framework window manager
-        Exec=awesome
-        Type=Application
-        Keywords=tiling;wm;windowmanager;
-      '';
-    };
     xkb = {
       layout = "us";
       variant = "";
@@ -77,7 +66,7 @@
   users.defaultUserShell = pkgs.xonsh;
   programs.xonsh.enable = true;
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
+  #services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
   # Enable CUPS to print documents.
