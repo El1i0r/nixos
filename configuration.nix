@@ -56,6 +56,17 @@
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;
+    windowManager.awesome = {
+      enable = true;
+      extraSession = ''
+        [Desktop Entry]
+        Name=Awesome
+        Comment=Highly configurable framework window manager
+        Exec=awesome
+        Type=Application
+        Keywords=tiling;wm;windowmanager;
+      '';
+    };
     xkb = {
       layout = "us";
       variant = "";
