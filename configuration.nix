@@ -71,7 +71,8 @@
   services.greetd.package = pkgs.greetd.regreet;
   services.greetd.enable = true;
   programs.regreet.enable = true;
-  programs.regreet.settings = { builtins.fromTOML ''  
+  programs.regreet.settings = {
+  builtins.fromTOML ''  
   [background]	
   # Path to the background image
   path = "/home/el1i0r/Downloads/r.jpg"
@@ -131,7 +132,7 @@
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
-    #media-session.enable = true;
+    #media-xsession.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
