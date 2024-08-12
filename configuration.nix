@@ -63,7 +63,7 @@
   };
   #eh no
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.xonsh.override;
+  users.defaultUserShell = pkgs.xonsh;
   programs.xonsh.enable = true;
   programs.xonsh.package = pkgs.xonsh.override { extraPackages = ps: [
   (ps.buildPythonPackage rec {
