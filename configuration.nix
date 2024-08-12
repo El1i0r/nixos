@@ -72,7 +72,7 @@
   services.greetd.enable = true;
   programs.regreet.enable = true;
   programs.regreet.settings = {
-  builtins.fromTOML ''  
+  builtins.fromTOML =  
   [background]	
   # Path to the background image
   path = "/home/el1i0r/Downloads/r.jpg"
@@ -113,7 +113,6 @@
   [appearance]
 # The message that initially displays on startup
   greeting_msg = "Welcome back!" 
-  ''
   };
   #yeah the monstrosity is finished
   # Enable CUPS to print documents.
