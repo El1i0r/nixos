@@ -114,7 +114,7 @@
     patchPhase = "sed -i -e 's/^dependencies.*$/dependencies = []/' pyproject.toml";
     doCheck = false;
   })
-]; };
+  ]; };
 
   # Enable the GNOME Desktop Environment.
   services.xserver.desktopManager.gnome.enable = true;
