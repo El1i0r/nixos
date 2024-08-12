@@ -71,49 +71,50 @@
   services.greetd.package = pkgs.greetd.regreet;
   services.greetd.enable = true;
   programs.regreet.enable = true;
-  programs.regreet.settings = {
-  
-[background]
-# Path to the background image
-path = "/home/el1i0r/Downloads/r.jpg"
+  programs.regreet.settings = { builtins.fromTOML ''  
+  [background]	
+  # Path to the background image
+  path = "/home/el1i0r/Downloads/r.jpg"
 
-# How the background image covers the screen if the aspect ratio doesn't match
+  # How the background image covers the screen if the aspect ratio doesn't match
 # Available values: "Fill", "Contain", "Cover", "ScaleDown"
 # Refer to: https://docs.gtk.org/gtk4/enum.ContentFit.html
 # NOTE: This is ignored if ReGreet isn't compiled with GTK v4.8 support.
-fit = "Contain"
+  fit = "Contain"
 
 # The entries defined in this section will be passed to the session as environment variables when it is started
-[env]
-ENV_VARIABLE = "value"
+  [env]
+  ENV_VARIABLE = "value"
 
-[GTK]
+  [GTK]
 # Whether to use the dark theme
-application_prefer_dark_theme = true
+  application_prefer_dark_theme = true
 
 # Cursor theme name
-cursor_theme_name = "Adwaita"
+  cursor_theme_name = "Adwaita"
 
 # Font name and size
-font_name = "Cantarell 16"
+  font_name = "Cantarell 16"
 
 # Icon theme name
-icon_theme_name = "Reversal-Orange"
+  icon_theme_name = "Reversal-Orange"
 
 # GTK theme name
-theme_name = "Colloid-Orange-Dark-Gruvbox"
+  theme_name = "Colloid-Orange-Dark-Gruvbox"
 
-[commands]
+  [commands]
 # The command used to reboot the system
-reboot = [ "systemctl", "reboot" ]
+  reboot = [ "systemctl", "reboot" ]
 
 # The command used to shut down the system
-poweroff = [ "systemctl", "poweroff" ]
+  poweroff = [ "systemctl", "poweroff" ]
 
-[appearance]
+  [appearance]
 # The message that initially displays on startup
-greeting_msg = "Welcome back!" 
+  greeting_msg = "Welcome back!" 
+  ''
   };
+  #yeah the monstrosity is finished
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
