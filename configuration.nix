@@ -61,7 +61,6 @@
       variant = "";
     };
   };
-  services.xserver.displayManager.startx.enable = true;
   services.xserver.windowManager.awesome.enable = true;
   #eh no
   programs.zsh.enable = true;
