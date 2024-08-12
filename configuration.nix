@@ -63,8 +63,8 @@
   };
   #eh no
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
-
+  users.defaultUserShell = pkgs.xonsh;
+  programs.xonsh.enable = true;
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
@@ -126,6 +126,7 @@
     pkgs.starship
     pkgs.zsh-autosuggestions
     pkgs.zsh
+    xonsh
     pkgs.nerdfonts
     pkgs.zsh-f-sy-h
     pkgs.jetbrains.pycharm-community-src
@@ -225,7 +226,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
