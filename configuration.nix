@@ -74,7 +74,7 @@
     owner = "anki-code";
       repo = "${name}";
       rev = "${version}";
-      sha256 = "06csyhq0h63vq4w17q032dg1cx3j4xrr76maf7a0x4jqcvj4w79q";
+      sha256 = "507cd7f6a9a1511767a45a6201c6910e2d0f1d6e595d2c38979853572ce05076";
     };
 
     meta = {
