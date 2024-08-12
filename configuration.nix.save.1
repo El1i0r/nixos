@@ -61,16 +61,15 @@
       variant = "";
     };
   };
-  #eh no
+  services.xserver.windowManager.awesome.enable = true;
+ #eh no
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.xonsh;
   programs.xonsh.enable = true;
   # Enable the GNOME Desktop Environment.
+  services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  #DM
-  services.greetd.package = pkgs.greetd.regreet;
-  services.greetd.enable = true;
-  programs.regreet.enable = true;
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -122,7 +121,6 @@
     pkgs.virt-manager
     pkgs.python312Packages.django
     pkgs.sassc
-    pkgs.greetd.regreet
     pkgs.gtk-engine-murrine
     pkgs.gnome-themes-extra
     pkgs.rPackages.curl
