@@ -134,6 +134,7 @@
     pkgs.zsh-autosuggestions
     pkgs.zsh
     xonsh
+    pkgs.python312Packages.pipx
     pkgs.nerdfonts
     pkgs.zsh-f-sy-h
     pkgs.jetbrains.pycharm-community-src
