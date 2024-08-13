@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./overlays.nix
+      ./xonsh.nix
       inputs.home-manager.nixosModules.default
     ];
   home-manager = {
@@ -18,6 +19,15 @@
       "el1i0r" = import ./home.nix;
     };
   };
+  # TESTING PART, DO NOT UNCOMMENT UNLESS YOU KNOW WHAT THE HECK YOU ARE DOING
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+      inherit pkgs;
+    };
+  };
+  # TESTING PART END
+
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -63,7 +73,7 @@
   };
   #eh no
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.xonsh;
+  users.defaultUserShell = config.programs.xonsh.package;
   programs.xonsh.enable = true;
   programs.xonsh.package = pkgs.xonsh.wrapper.override { extraPackages = ps: [
   (ps.buildPythonPackage rec {
