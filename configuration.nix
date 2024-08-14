@@ -9,6 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./overlays.nix
+      #./xonsh.nix
       inputs.home-manager.nixosModules.default
     ];
   home-manager = {
@@ -18,6 +19,15 @@
       "el1i0r" = import ./home.nix;
     };
   };
+  # TESTING PART, DO NOT UNCOMMENT UNLESS YOU KNOW WHAT THE HECK YOU ARE DOING
+  nixpkgs.config.packageOverrides = pkgs: {
+    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+      inherit pkgs;
+    };
+  };
+  # TESTING PART END
+
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -65,6 +75,7 @@
   programs.zsh.enable = true;
   users.defaultUserShell = config.programs.xonsh.package;
   programs.xonsh.enable = true;
+<<<<<<< HEAD
   programs.xonsh.package = pkgs.xonsh.wrapper.override { extraPackages = ps: [
   (ps.buildPythonPackage rec {
     name = "xontrib-sh";
@@ -116,6 +127,9 @@
   })
   ]; };
 
+=======
+  # programs.xonsh.package = pkgs.xonsh;
+>>>>>>> master
   # Enable the GNOME Desktop Environment.
   services.xserver.desktopManager.gnome.enable = true;
   #DM
@@ -132,19 +146,34 @@
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+ # services.pipewire = {
+ #   enable = true;
+ #   alsa.enable = true;
+ #   alsa.support32Bit = true;
+ #   pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-xsession.enable = true;
+ # };
+  services.pipewire = {
+  enable = true;
+  alsa.enable = true;
+  alsa.support32Bit = true;
+  pulse.enable = true;
+  wireplumber = {
+    enable = true;
+    extraConfig = {
+      "10-disable-camera" = {
+        "wireplumber.profiles" = {
+          main."monitor.libcamera" = "disabled";
+          };
+        };
+      };
+    };
   };
-
   # Enable touchpad support (enabled default in most desktopManager).
    services.libinput.enable = true;
 
