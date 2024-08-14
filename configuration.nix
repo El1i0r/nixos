@@ -63,7 +63,7 @@
   };
   #eh no
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.xonsh;
+  users.defaultUserShell = config.programs.xonsh.packag;
   programs.xonsh.enable = true;
   programs.xonsh.package = pkgs.xonsh.wrapper.override { extraPackages = ps: [
   (ps.buildPythonPackage rec {
@@ -74,7 +74,7 @@
     owner = "anki-code";
       repo = "${name}";
       rev = "${version}";
-      sha256 = "507cd7f6a9a1511767a45a6201c6910e2d0f1d6e595d2c38979853572ce05076";
+      sha256 = "sha256-KL/AxcsvjxqxvjDlf1axitgME3T+iyuW6OFb1foRzN8+";
     };
 
     meta = {
@@ -85,10 +85,10 @@
     };
 
     prePatch = ''
-      pkgs.lib.substituteInPlace pyproject.toml --replace '"xonsh>=0.12.5"' ""
+#      pkgs.lib.substituteInPlace pyproject.toml --replace '"xonsh>=0.12.5"' ""
     '';
-    patchPhase = "sed -i -e 's/^dependencies.*$/dependencies = []/' pyproject.toml";
-    doCheck = false;
+ #   patchPhase = "sed -i -e 's/^dependencies.*$/dependencies = []/' pyproject.toml";
+  #  doCheck = false;
   })
   (ps.buildPythonPackage rec {
     name = "xontrib-fish-completer";
@@ -184,7 +184,7 @@
     pkgs.starship
     pkgs.zsh-autosuggestions
     pkgs.zsh
-    xonsh
+#    xonsh
     pkgs.python312Packages.pipx
     pkgs.nerdfonts
     pkgs.zsh-f-sy-h
