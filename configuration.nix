@@ -75,7 +75,6 @@
   programs.zsh.enable = true;
   users.defaultUserShell = config.programs.xonsh.package;
   programs.xonsh.enable = true;
-<<<<<<< HEAD
   programs.xonsh.package = pkgs.xonsh.wrapper.override { extraPackages = ps: [
   (ps.buildPythonPackage rec {
     name = "xontrib-sh";
@@ -127,9 +126,8 @@
   })
   ]; };
 
-=======
   # programs.xonsh.package = pkgs.xonsh;
->>>>>>> master
+
   # Enable the GNOME Desktop Environment.
   services.xserver.desktopManager.gnome.enable = true;
   #DM
