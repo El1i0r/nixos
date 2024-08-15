@@ -131,13 +131,8 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.desktopManager.gnome.enable = true;
   #DM
-  services.greetd.package = pkgs.greetd.regreet;
+  services.greetd.package = pkgs.greetd.greetd;
   services.greetd.enable = true;
-  programs.regreet.enable = true;
-  programs.regreet.theme.name = "Colloid-Orange-Dark-Gruvbox";
-  programs.regreet.font.name = "CozetteHiDpi";
-  programs.regreet.iconTheme.name = "Reversal-Orange";
-  #yeah the monstrosity is finished
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -205,7 +200,7 @@
     pkgs.virt-manager
     pkgs.python312Packages.django
     pkgs.sassc
-    pkgs.greetd.regreet
+    pkgs.greetd.greetd
     pkgs.gtk-engine-murrine
     pkgs.gnome-themes-extra
     pkgs.rPackages.curl
