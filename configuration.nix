@@ -71,6 +71,8 @@
       variant = "";
     };
   };
+  services.xserver.windowManager.awesome.enable = true;
+  services.xserver.windowManager.awesome.package = pkgs.awesomeWM;
   #eh no
   programs.zsh.enable = true;
   users.defaultUserShell = config.programs.xonsh.package;
@@ -131,8 +133,7 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.desktopManager.gnome.enable = true;
   #DM
-  services.greetd.package = pkgs.greetd.greetd;
-  services.greetd.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
