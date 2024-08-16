@@ -226,6 +226,8 @@
     btop
     acpi
     killall
+    pkgs.python312Packages.distro
+    pkgs.python312Packages.pyxdg
     pkgs.alacritty
     pkgs.luajit
     pkgs.scrot
