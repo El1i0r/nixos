@@ -19,13 +19,7 @@
       "el1i0r" = import ./home.nix;
     };
   };
-  # TESTING PART, DO NOT UNCOMMENT UNLESS YOU KNOW WHAT THE HECK YOU ARE DOING
-  nixpkgs.config.packageOverrides = pkgs: {
-    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-      inherit pkgs;
-    };
-  };
-  # TESTING PART END
+  
 
 
   # Bootloader.
@@ -62,18 +56,28 @@
   };
 
   # Enable the X11 windowing system, configure keymap in X11, and enable awesomeWM
-  # services.xserver.enable = true;
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;
+    # Enable the GNOME Desktop Environment.
+    desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
+    desktopManager.session = [
+      {
+        name = "AwesomeWM";
+        start = ''
+          startx
+        '';
+      }
+    ];
     xkb = {
       layout = "us";
       variant = "";
     };
   };
-  services.xserver.windowManager.awesome.enable = true;
-  services.xserver.windowManager.awesome.package = pkgs.awesomeWM;
-  #eh no
+ 
+
+  # SHELL CONFIGS
   programs.zsh.enable = true;
   users.defaultUserShell = config.programs.xonsh.package;
   programs.xonsh.enable = true;
@@ -97,9 +101,9 @@
     };
 
     prePatch = ''
-#      pkgs.lib.substituteInPlace pyproject.toml --replace '"xonsh>=0.12.5"' ""
+
     '';
- #   patchPhase = "sed -i -e 's/^dependencies.*$/dependencies = []/' pyproject.toml";
+
   #  doCheck = false;
   })
   (ps.buildPythonPackage rec {
@@ -128,12 +132,6 @@
   })
   ]; };
 
-  # programs.xonsh.package = pkgs.xonsh;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.desktopManager.gnome.enable = true;
-  #DM
-  services.xserver.displayManager.gdm.enable = true;
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
