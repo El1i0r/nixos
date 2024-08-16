@@ -1,17 +1,63 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, inputs, ... }:
+######################################################################################################################################
+#          _____                    _____                                           _______                   _____                  #
+#         /\    \                  /\    \                 ______                  /::\    \                 /\    \                 #
+#        /::\____\                /::\    \               |::|   |                /::::\    \               /::\    \                #
+#       /::::|   |                \:::\    \              |::|   |               /::::::\    \             /::::\    \               #
+#      /:::::|   |                 \:::\    \             |::|   |              /::::::::\    \           /::::::\    \              #
+#     /::::::|   |                  \:::\    \            |::|   |             /:::/~~\:::\    \         /:::/\:::\    \             #
+#    /:::/|::|   |                   \:::\    \           |::|   |            /:::/    \:::\    \       /:::/__\:::\    \            #
+#   /:::/ |::|   |                   /::::\    \          |::|   |           /:::/    / \:::\    \      \:::\   \:::\    \           #
+#  /:::/  |::|   | _____    ____    /::::::\    \         |::|   |          /:::/____/   \:::\____\   ___\:::\   \:::\    \          #
+# /:::/   |::|   |/\    \  /\   \  /:::/\:::\    \  ______|::|___|___ ____ |:::|    |     |:::|    | /\   \:::\   \:::\    \         #
+#/:: /    |::|   /::\____\/::\   \/:::/  \:::\____\|:::::::::::::::::|    ||:::|____|     |:::|    |/::\   \:::\   \:::\____\        #
+#\::/    /|::|  /:::/    /\:::\  /:::/    \::/    /|:::::::::::::::::|____| \:::\    \   /:::/    / \:::\   \:::\   \::/    /        #
+# \/____/ |::| /:::/    /  \:::\/:::/    / \/____/  ~~~~~~|::|~~~|~~~        \:::\    \ /:::/    /   \:::\   \:::\   \/____/         #
+#         |::|/:::/    /    \::::::/    /                 |::|   |            \:::\    /:::/    /     \:::\   \:::\    \             #
+#         |::::::/    /      \::::/____/                  |::|   |             \:::\__/:::/    /       \:::\   \:::\____\            #
+#         |:::::/    /        \:::\    \                  |::|   |              \::::::::/    /         \:::\  /:::/    /            #
+#         |::::/    /          \:::\    \                 |::|   |               \::::::/    /           \:::\/:::/    /             #
+#         /:::/    /            \:::\    \                |::|   |                \::::/    /             \::::::/    /              #
+#        /:::/    /              \:::\____\               |::|   |                 \::/____/               \::::/    /               #
+#        \::/    /                \::/    /               |::|___|                  ~~                      \::/    /                #
+#         \/____/                  \/____/                 ~~                                                \/____/                 #
+#                                                                                                                                    #
+#                                                                                                                                    #
+#																     #
+#                                                           CONFIGURATION.NIX                                                        #
+# Last commit: 16/Aug/2024      												     #
+# Commit message: Modularizing and cleaning up                                                                                       #
+# Directory: /etc/nixos/													     #
+#                                                        									     #	
+# ----------------------------------------------------------- CONFIG START ----------------------------------------------------------#
+
+
+
+                                                                                                                        
+{ 
+  config, 
+  pkgs, 
+  inputs, 
+  ... 
+}:
 
 {
+
+
+  # ENABLE FLAKES AND NIX-COMMANDS
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+
   imports =
-    [ # Include the results of the hardware scan.
+
+
+    [ 
       ./hardware-configuration.nix
       ./overlays.nix
-      #./xonsh.nix
+      ./xonsh-wrapped.nix
       inputs.home-manager.nixosModules.default
     ];
+
+
   home-manager = {
     # also pass inputs to home-manager modules
     extraSpecialArgs = {inherit inputs;};
@@ -25,15 +71,23 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "ORBIUM-A5"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  
+  # Hostname
+  networking.hostName = "ORBIUM-A5";
+ 
+  # Enable wireless networking
+  networking.wireless.enable = true;
+
+  # Enable flatpak 
   services.flatpak.enable = true;
+  
+  # AutoUpgrade
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+ 
+  # App Image, TODO move to ./programs/appimage.nix, and make it actually work
   programs.appimage.binfmt = true;
+
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -55,101 +109,33 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system, configure keymap in X11, and enable awesomeWM
+
+  # Enable the X11 windowing system, configure keymap in X11, and enable GNOME, further idiocy in home.nix
   services.xserver = {
     enable = true;
     displayManager.startx.enable = true;
     # Enable the GNOME Desktop Environment.
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
-    desktopManager.session = [
-      {
-        name = "AwesomeWM";
-        start = ''
-          startx
-        '';
-      }
-    ];
-    xkb = {
+      xkb = {
       layout = "us";
       variant = "";
     };
   };
  
 
+
   # SHELL CONFIGS
   programs.zsh.enable = true;
   users.defaultUserShell = config.programs.xonsh.package;
   programs.xonsh.enable = true;
-  programs.xonsh.package = pkgs.xonsh.wrapper.override { extraPackages = ps: [
-  (ps.buildPythonPackage rec {
-    name = "xontrib-sh";
-    version = "0.3.1";
-
-    src = pkgs.fetchFromGitHub {
-    owner = "anki-code";
-      repo = "${name}";
-      rev = "${version}";
-      sha256 = "sha256-KL/AxcsvjxqxvjDlf1axitgME3T+iyuW6OFb1foRzN8=";
-    };
-
-    meta = {
-      homepage = "https://github.com/anki-code/xontrib-sh";
-      description = "Paste and run commands from bash, fish, zsh, tcsh in xonsh shell.";
-      license = pkgs.lib.licenses.mit;
-      maintainers = [ ];
-    };
-
-    prePatch = ''
-
-    '';
-
-  #  doCheck = false;
-  })
-  (ps.buildPythonPackage rec {
-    name = "xontrib-fish-completer";
-    version = "0.0.1";
-
-    src = pkgs.fetchFromGitHub {
-    owner = "xonsh";
-      repo = "${name}";
-      rev = "${version}";
-      sha256 = "sha256-PhhdZ3iLPDEIG9uDeR5ctJ9zz2+YORHBhbsiLrJckyA=";
-    };
-
-    meta = {
-      homepage = "https://github.com/xonsh/xontrib-fish-completer";
-      description = "Populate rich completions using fish and remove the default bash based completer";
-      license = pkgs.lib.licenses.mit;
-      maintainers = [ ];
-    };
-
-    prePatch = ''
-      pkgs.lib.substituteInPlace pyproject.toml --replace '"xonsh>=0.12.5"' ""
-    '';
-    patchPhase = "sed -i -e 's/^dependencies.*$/dependencies = []/' pyproject.toml";
-    doCheck = false;
-  })
-  ]; };
-
+ 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
- # services.pipewire = {
- #   enable = true;
- #   alsa.enable = true;
- #   alsa.support32Bit = true;
- #   pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-xsession.enable = true;
- # };
   services.pipewire = {
   enable = true;
   alsa.enable = true;
@@ -166,8 +152,11 @@
       };
     };
   };
+
+
   # Enable touchpad support (enabled default in most desktopManager).
    services.libinput.enable = true;
+
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.el1i0r = {
@@ -179,16 +168,18 @@
     ];
   };
 
+
   # Install firefox.
   programs.firefox.enable = true;
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+
+  # List packages installed in system profile.
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    vim
     wget
     lxappearance
     pkgs.neovim
@@ -206,7 +197,6 @@
     pkgs.starship
     pkgs.zsh-autosuggestions
     pkgs.zsh
-#    xonsh
     pkgs.python312Packages.pipx
     pkgs.nerdfonts
     pkgs.zsh-f-sy-h
@@ -221,9 +211,12 @@
     pkgs.gnomeExtensions.desktop-icons-ng-ding
     #other idiocy
     pkgs.zed-editor
-    btop
-    acpi
-    killall
+    pkgs.btop
+    pkgs.acpi
+    pkgs.killall
+    pkgs.xdg-desktop-portal-gtk
+    pkgs.xdg-desktop-portal
+    pkgs.xdg-desktop-portal-gnome
     pkgs.python312Packages.distro
     pkgs.python312Packages.pyxdg
     pkgs.alacritty
@@ -300,16 +293,18 @@
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+   programs.mtr.enable = true;
+   programs.gnupg.agent = {
+     enable = true;
+     enableSSHSupport = true;
+   };
+
 
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
