@@ -54,17 +54,17 @@
       ./hardware-configuration.nix
       ../../modules/overlays/awesomeWM.nix
       ../../modules/wrappers/xonsh-wrapped.nix
-      inputs.home-manager.nixosModules.default
+  #    inputs.home-manager.nixosModules.default
     ];
 
 
-  home-manager = {
+ # home-manager = {
     # also pass inputs to home-manager modules
-    extraSpecialArgs = {inherit inputs;};
-    users = {
-      "el1i0r" = import ./home.nix;
-    };
-  };
+ #   extraSpecialArgs = {inherit inputs;};
+ #   users = {
+ #     "el1i0r" = import ./home.nix;
+ #   };
+ # };
   
 
 
