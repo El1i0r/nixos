@@ -26,7 +26,7 @@
 #                                                           CONFIGURATION.NIX                                                        #
 # Last commit: 16/Aug/2024      												     #
 # Commit message: Modularizing and cleaning up                                                                                       #
-# Directory: /etc/nixos/													     #
+# Directory: /etc/nixos/hosts/ORBIUM-A5													     #
 #                                                        									     #	
 # ----------------------------------------------------------- CONFIG START ----------------------------------------------------------#
 
@@ -52,8 +52,8 @@
 
     [ 
       ./hardware-configuration.nix
-      ./overlays.nix
-      ./xonsh-wrapped.nix
+      /etc/nixos/modules/overlays/awesomeWM.nix
+      /etc/nixos/modules/wrappers/xonsh-wrapped.nix
       inputs.home-manager.nixosModules.default
     ];
 
@@ -76,7 +76,7 @@
   networking.hostName = "ORBIUM-A5";
  
   # Enable wireless networking
-  networking.wireless.enable = true;
+  # networking.wireless.enable = true;
 
   # Enable flatpak 
   services.flatpak.enable = true;

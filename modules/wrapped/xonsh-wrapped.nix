@@ -6,10 +6,10 @@
 }:
 {
 
- programs.xonsh.package = pkgs.xonsh.wrapper.override { extraPackages = ps: [
-  (ps.buildPythonPackage rec {
-    name = "xontrib-sh";
-    version = "0.3.1";
+  programs.xonsh.package = pkgs.xonsh.wrapper.override { extraPackages = ps: [
+   (ps.buildPythonPackage rec {
+     name = "xontrib-sh";
+     version = "0.3.1";
 
     src = pkgs.fetchFromGitHub {
     owner = "anki-code";
@@ -55,6 +55,6 @@
     patchPhase = "sed -i -e 's/^dependencies.*$/dependencies = []/' pyproject.toml";
     doCheck = false;
   })
-  ]; }
-
+  ]; };
 }
+
