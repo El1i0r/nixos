@@ -26,7 +26,7 @@
 #                                                           CONFIGURATION.NIX                                                        #
 # Last commit: 16/Aug/2024      												     #
 # Commit message: Modularizing and cleaning up                                                                                       #
-# Directory: /etc/nixos/hosts/ORBIUM-A5													     #
+# Directory: /etc/nixos/hosts/ORBIUM-A5												     #
 #                                                        									     #	
 # ----------------------------------------------------------- CONFIG START ----------------------------------------------------------#
 
@@ -117,6 +117,15 @@
     # Enable the GNOME Desktop Environment.
     desktopManager.gnome.enable = true;
     displayManager.gdm.enable = true;
+    desktopManager.session = [
+     {
+       name = "AwesomeWM";
+       start = ''
+        ${pkgs.runtimeShell} $HOME/.hm-xsession &
+        waitPID=$!
+       '';
+     }
+   ];
       xkb = {
       layout = "us";
       variant = "";
