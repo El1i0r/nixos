@@ -52,8 +52,8 @@
 
     [ 
       ./hardware-configuration.nix
-      /etc/nixos/modules/overlays/awesomeWM.nix
-      /etc/nixos/modules/wrappers/xonsh-wrapped.nix
+      ../../modules/overlays/awesomeWM.nix
+      ../../modules/wrappers/xonsh-wrapped.nix
       inputs.home-manager.nixosModules.default
     ];
 
