@@ -211,7 +211,7 @@
     pkgs.zsh-f-sy-h
     pkgs.jetbrains.pycharm-community-src
     pkgs.jetbrains-toolbox
-    pkgs.python3
+    pkgs.python312full
     #gnomies
     pkgs.gnome-tweaks
     pkgs.gnomeExtensions.tweaks-in-system-menu
@@ -297,7 +297,9 @@
     pkgs.libxdg_basedir
     pkgs.gdk-pixbuf-xlib
     pkgs.discord
-
+    pkgs.kitty
+    tmux
+    tmuxPlugins.gruvbox
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
