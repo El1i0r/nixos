@@ -7,7 +7,7 @@ The Orbium Flake
 > Trying to build and deploy them to other systems without appropriate changes
 > can render your machines unbootable and damage data.
 
-> [!WARN]
+> [!WARNING]
 > Piece of advice, press Crtl+W, FOR YOUR OWN SANITY!
 
 > [!NOTE]
