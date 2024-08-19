@@ -211,7 +211,7 @@
     pkgs.zsh-f-sy-h
     pkgs.jetbrains.pycharm-community-src
     pkgs.jetbrains-toolbox
-    pkgs.python312full
+    pkgs.python312Full
     #gnomies
     pkgs.gnome-tweaks
     pkgs.gnomeExtensions.tweaks-in-system-menu
