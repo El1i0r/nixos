@@ -219,6 +219,7 @@
     pkgs.gnomeExtensions.arcmenu
     pkgs.gnomeExtensions.desktop-icons-ng-ding
     #other idiocy
+    bunnyfetch
     pkgs.zed-editor
     pkgs.btop
     pkgs.acpi
