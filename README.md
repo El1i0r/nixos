@@ -5,14 +5,18 @@ The Orbium Flake
 > This hosts system and home configurations are public for your own learning and
 > research. They are not meant to be used with any hardware other than mine.
 > Trying to build and deploy them to other systems without appropriate changes
-> can render your machines unbootable and damage data.
+> can render your machines unbootable and damage data. Yes, say goodbye to your
+> stupid anime waifu wallpapers. Muahuahuahauhahahaha
 
 > [!WARNING]
-> Piece of advice, press Crtl+W, FOR YOUR OWN SANITY!
+> Piece of advice, press Crtl+W, FOR YOUR OWN SANITY! I am not a dev, and it 
+> is messy, these stuff are hella messy!!!!
 
 > [!NOTE]
 > I do not provide copy/pastable commands that would build/switch/install any
-> of these configurations because I mean what I wrote in the block before!
+> of these configurations because not only I am lasy but it isn't a good idea!
+> Without proper changes, you can make your system borked, so please, be a 
+> professional and not a rock head.
 
 
 A NixOS flake which is pretty messy as of now
@@ -23,7 +27,7 @@ Hosts
 * `ORBIUM-A5`: A Thinkpad-E14 First Gen, my daily driver and only host as *OF NOW*. Uses my AwesomeWM config
 
 # What I used for the AwesomeWM rice:
-* Kitty
+* Alacritty
 * Wibar
 * Picom
 * Neovim ( config not uploaded yet )
