@@ -308,7 +308,7 @@
         owner = "pijulius";
         repo = "picom";
         rev = "next";
-        hash = "sha256-59I6uozu4g9hll5U/r0nf4q92+zwRlbOD/z4R8TpSdo=";
+        hash = "sha256-LOX+xbCqMehmI3Ji77OmQaWxeSJDdb9Jduo6cErVeys=";
       };
      nativeBuildInputs = [
          asciidoctor
