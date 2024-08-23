@@ -275,7 +275,7 @@
     pkgs.gio-sharp
     pkgs.xwinwrap
     pkgs.brightnessctl
-    pkgs.picom-pijulius
+    pkgs.picom-next
     pkgs.nautilus
     luajitPackages.luarocks
     xorg.xprop
