@@ -14,6 +14,9 @@
       rev = "next";
       hash = "sha256-LOX+xbCqMehmI3Ji77OmQaWxeSJDdb9Jduo6cErVeys";
     };
+    ativeBuildInputs = [
+         asciidoctor
+     ] ++ oldAttrs.nativeBuildInputs;
   }))
 ];
 }
