@@ -300,6 +300,7 @@
     pkgs.gdk-pixbuf-xlib
     pkgs.discord
     pkgs.kitty
+    pkgs.tym
     tmux
     tmuxPlugins.gruvbox
     # prepare for death
