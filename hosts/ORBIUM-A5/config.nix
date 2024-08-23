@@ -54,7 +54,7 @@
       ./hardware-configuration.nix
       ../../modules/overlays/awesomeWM.nix
       ../../modules/wrappers/xonsh-wrapped.nix
-      ../../modules/overlays/picom.nix
+  #    ../../modules/overlays/picom.nix
   #    inputs.home-manager.nixosModules.default
     ];
 
