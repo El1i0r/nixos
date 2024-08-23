@@ -302,6 +302,18 @@
     pkgs.kitty
     tmux
     tmuxPlugins.gruvbox
+    # prepare for death
+    (picom.overrideAttrs (oldAttrs: rec {
+      src = fetchFromGitHub {
+        owner = "pijulius";
+        repo = "picom";
+        rev = "next";
+        hash = "sha256-59I6uozu4g9hll5U/r0nf4q92+zwRlbOD/z4R8TpSdo=";
+      };
+     nativeBuildInputs = [
+         asciidoctor
+     ] ++ oldAttrs.nativeBuildInputs;
+    }))
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
