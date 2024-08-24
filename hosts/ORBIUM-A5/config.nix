@@ -276,6 +276,7 @@
     pkgs.gio-sharp
     pkgs.xwinwrap
     pkgs.brightnessctl
+    hayabusa
     #pkgs.picom-next# picom ===>>> ../../modules/overlays/picom.nix 
     pkgs.nautilus
     luajitPackages.luarocks
