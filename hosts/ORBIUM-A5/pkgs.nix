@@ -1,0 +1,139 @@
+{
+  
+  pkgs,
+  input,
+  lib,
+  ...
+
+}:
+{
+environment.systemPackages = with pkgs; [
+    vim
+    wget
+    lxappearance
+    pkgs.neovim
+    pkgs.wget
+    pkgs.python312Packages.pip
+    pkgs.jetbrains.gateway
+    pkgs.git
+    pkgs.virt-manager
+    pkgs.python312Packages.django
+    pkgs.sassc
+    pkgs.greetd.greetd
+    pkgs.gtk-engine-murrine
+    pkgs.gnome-themes-extra
+    pkgs.rPackages.curl
+    pkgs.starship
+    pkgs.zsh-autosuggestions
+    pkgs.zsh
+    pkgs.python312Packages.pipx
+    pkgs.nerdfonts
+    pkgs.zsh-f-sy-h
+    pkgs.jetbrains.pycharm-community-src
+    pkgs.jetbrains-toolbox
+    pkgs.python312Full
+    #gnomies
+    pkgs.gnome-tweaks
+    pkgs.gnomeExtensions.tweaks-in-system-menu
+    pkgs.gnomeExtensions.blur-my-shell
+    pkgs.gnomeExtensions.arcmenu
+    pkgs.gnomeExtensions.desktop-icons-ng-ding
+    #other idiocy
+    bunnyfetch
+    pkgs.zed-editor
+    pkgs.btop
+    pkgs.acpi
+    pkgs.killall
+    pkgs.xdg-desktop-portal-gtk
+    pkgs.xdg-desktop-portal
+    pkgs.xdg-desktop-portal-gnome
+    pkgs.python312Packages.distro
+    pkgs.python312Packages.pyxdg
+    pkgs.alacritty
+    pkgs.luajit
+    pkgs.scrot
+    pkgs.xorg.libxcb
+    pkgs.xorg.libXcursor
+    pkgs.xorg.xkbutils
+    pkgs.xorg.xcbutilkeysyms
+    pkgs.xorg.xcbutilrenderutil
+    pkgs.xorg.xcbutilwm
+    pkgs.xorg.xcbutilimage
+    pkgs.xorg.xcbutilerrors
+    pkgs.xorg.xcbutil
+    pkgs.xorg.fontutil
+    pkgs.obs-studio
+    pkgs.xcb-util-cursor
+    pkgs.wmutils-opt
+    pkgs.wmutils-libwm
+    pkgs.wmutils-core
+    pkgs.libxkbcommon
+    pkgs.xcbutilxrm
+    pkgs.libstartup_notification
+    pkgs.cairo
+    pkgs.python312Packages.django
+    pkgs.dbus
+    pkgs.asciidoctor
+    pkgs.librsvg
+    pkgs.wmctrl
+    pkgs.gtk3
+    pkgs.nemo-with-extensions
+    pkgs.wezterm
+    pkgs.folder-color-switcher
+    pkgs.nemo-fileroller
+    pkgs.nemo-emblems
+    pkgs.nemo-python
+    pkgs.lf
+    pkgs.cowsay
+    pkgs.nitch
+    pkgs.fastfetch
+    pkgs.gtk4
+    pkgs.gtk2
+    pkgs.gnumake
+    pkgs.pango
+    pkgs.glib
+    pkgs.gio-sharp
+    pkgs.xwinwrap
+    pkgs.brightnessctl
+    hayabusa
+    #pkgs.picom-next# picom ===>>> ../../modules/overlays/picom.nix
+    pkgs.nautilus
+    luajitPackages.luarocks
+    xorg.xprop
+    xorg.xinit
+    python312Packages.cmake
+    luajitPackages.lgi
+    luajit
+    xorg.xorgproto
+    xorg.libxcb
+    xcb-util-cursor
+    xorg.xcbutil
+    xorg.xcbutilkeysyms
+    cairo
+    pango
+    pkgs.betterdiscordctl
+    glib
+    haskellPackages.gio
+    pkgs.xorg.libX11
+    pkgs.imagemagick
+    pkgs.libxdg_basedir
+    pkgs.gdk-pixbuf-xlib
+    pkgs.discord
+    pkgs.kitty
+    pkgs.tym
+    tmux
+    tmuxPlugins.gruvbox
+    # prepare for death
+    (picom.overrideAttrs (oldAttrs: rec {
+      src = fetchFromGitHub {
+        owner = "pijulius";
+        repo = "picom";
+        rev = "next";
+        hash = "sha256-LOX+xbCqMehmI3Ji77OmQaWxeSJDdb9Jduo6cErVeys=";
+      };
+     nativeBuildInputs = [
+         asciidoctor
+     ] ++ oldAttrs.nativeBuildInputs;
+    }))
+  ];
+}
