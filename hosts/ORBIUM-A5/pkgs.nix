@@ -9,6 +9,38 @@
 {
 environment.systemPackages = with pkgs; [
     vim
+    #nvim starti
+    pkgs.vimPlugins.lazy-nvim
+    pkgs.vimPlugins.comment-nvim
+    pkgs.vimPlugins.nvim-treesitter
+    pkgs.vimPlugins.telescope-nvim
+    pkgs.vimPlugins.telescope-fzf-native-nvim
+    pkgs.vimPlugins.mason-nvim
+    pkgs.vimPlugins.mason-lspconfig-nvim
+    pkgs.vimPlugins.nvim-lspconfig
+    pkgs.vimPlugins.lspkind-nvim
+    pkgs.vimPlugins.nvim-cmp
+    pkgs.vimPlugins.cmp-nvim-lsp
+    pkgs.vimPlugins.cmp-buffer
+    pkgs.vimPlugins.cmp-path
+    pkgs.vimPlugins.cmp-cmdline  
+    pkgs.luajitPackages.gitsigns-nvim
+    pkgs.luajitPackages.luasnip
+    pkgs.vimPlugins.lualine-nvim
+    pkgs.vimPlugins.nvim-cokeline
+    pkgs.vimPlugins.nvim-treesitter-parsers.python
+    pkgs.vimPlugins.nvim-treesitter-parsers.markdown
+    pkgs.vimPlugins.nvim-treesitter-parsers.lua
+    pkgs.vimPlugins.nvim-tree-lua
+    pkgs.vimPlugins.indent-blankline-nvim
+    pkgs.vimPlugins.alpha-nvim
+    pkgs.vimPlugins.nvim-highlight-colors
+    pkgs.vimPlugins.toggleterm-nvim
+    pkgs.vimPlugins.dressing-nvim
+    pkgs.vimPlugins.venn-nvim
+    pkgs.vimPlugins.nabla-nvim
+    #nvim stop
+
     wget
     lxappearance
     pkgs.neovim
