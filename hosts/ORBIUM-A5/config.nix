@@ -102,7 +102,6 @@
       uris = ["qemu:///system"];
     };
   };
-  users.users.el1i0r.extraGroups = [ "libvirtd" ];
   # Set your time zone.
   time.timeZone = "Asia/Karachi";
  
@@ -183,7 +182,7 @@
   users.users.el1i0r = {
     isNormalUser = true;
     description = "El1i0r";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [
     #  thunderbird
     ];
