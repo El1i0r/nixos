@@ -92,10 +92,20 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
+  
+  # Enable distro-hopping support
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  dconf.settings = {
+  "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
+  };
+  users.users.el1i0r.extraGroups = [ "libvirtd" ];
   # Set your time zone.
   time.timeZone = "Asia/Karachi";
-
+ 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
