@@ -96,13 +96,7 @@
   # Enable distro-hopping support
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
-  dconf.settings = {
-  "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-      uris = ["qemu:///system"];
-    };
-  };
-  # Set your time zone.
+  #Set your time zone.
   time.timeZone = "Asia/Karachi";
  
   # Select internationalisation properties.
