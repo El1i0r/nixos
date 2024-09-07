@@ -11,8 +11,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  
- 
   outputs =
     { nixpkgs, home-manager, self, nixos-cosmic  ... }@inputs:
     let
@@ -43,14 +41,14 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
               home-manager.users.${username} = import ./hosts/${host}/home.nix;
-            }
-            {
-            nix.settings = {
-              substituters = [ "https://cosmic.cachix.org/" ];
-              trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
             };
-            nixos-cosmic.nixosModules.default
-          }
+            {
+               nix.settings = {
+               substituters = [ "https://cosmic.cachix.org/" ];
+               trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+               };
+            };
+              nixos-cosmic.nixosModules.default
           ];
         };
       };
