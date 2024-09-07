@@ -11,7 +11,7 @@
     };
   };
   outputs =
-    { nixpkgs, home-manager, self, nixos-cosmic  ... }@inputs:
+    { nixpkgs, home-manager, self, nixos-cosmic,  ... }@inputs:
     let
       system = "x86_64-linux";
       host = "ORBIUM-A5";
