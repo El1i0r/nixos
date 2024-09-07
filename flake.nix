@@ -40,7 +40,7 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
               home-manager.users.${username} = import ./hosts/${host}/home.nix;
-            };
+            }
             {
                nix.settings = {
                substituters = [ "https://cosmic.cachix.org/" ];
