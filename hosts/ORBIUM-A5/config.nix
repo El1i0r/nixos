@@ -186,7 +186,8 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-
+  # Test COSMIC flake
+  hardware.system76.enableAll = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
