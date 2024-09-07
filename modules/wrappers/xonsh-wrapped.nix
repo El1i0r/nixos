@@ -6,7 +6,7 @@
 }:
 {
 
-  programs.xonsh.package = pkgs.xonsh.wrapper.override { extraPackages = ps: [
+  programs.xonsh.package = pkgs.xonsh.override { extraPackages = ps: [
    (ps.buildPythonPackage rec {
      name = "xontrib-sh";
      version = "0.3.1";
