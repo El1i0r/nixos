@@ -1,7 +1,7 @@
 {
   
   pkgs,
-  input,
+  inputs,
   lib,
   ...
 
@@ -9,6 +9,7 @@
 {
 environment.systemPackages = with pkgs; [
     vim
+    inputs.matugen.packages.${system}.default
     #nvim starti
     pkgs.vimPlugins.lazy-nvim
     pkgs.vimPlugins.comment-nvim
@@ -39,6 +40,7 @@ environment.systemPackages = with pkgs; [
     pkgs.vimPlugins.dressing-nvim
     pkgs.vimPlugins.venn-nvim
     pkgs.vimPlugins.nabla-nvim
+    pkgs.vimPlugins.mini-nvim
     #nvim stop
 
     wget

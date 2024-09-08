@@ -187,7 +187,8 @@
   programs.firefox.enable = true;
 
   # Test COSMIC flake
-  hardware.system76.enableAll = true;
+  # hardware.system76.enableAll = true;
+  services.desktopManager.cosmic.enable = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
