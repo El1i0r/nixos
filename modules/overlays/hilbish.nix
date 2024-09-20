@@ -11,7 +11,6 @@ buildGoModule rec {
     hash = "sha256-bCV9hiTvtkdEMPEn9r5PxB+MqJk030E5YISN8B/4h4A=";
     fetchSubmodules = true;
   };
-
   subPackages = [ "." ];
 
   vendorHash = "sha256-v5YkRZA8oOKwXa6yFGQ33jKEc742zIrmJ0+w8ggmu/0=";
