@@ -5,8 +5,7 @@ The Orbium Flake
 > This hosts system and home configurations are public for your own learning and
 > research. They are not meant to be used with any hardware other than mine.
 > Trying to build and deploy them to other systems without appropriate changes
-> can render your machines unbootable and damage data. Yes, say goodbye to your
-> stupid anime waifu wallpapers. Muahuahuahauhahahaha
+> can render your machines unbootable and damage data. 
 
 > [!WARNING]
 > Piece of advice, press Crtl+W, FOR YOUR OWN SANITY! I am not a dev, and it 
