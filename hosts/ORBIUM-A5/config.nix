@@ -55,6 +55,7 @@
       ./pkgs.nix
       ../../modules/overlays/awesomeWM.nix
       ../../modules/wrappers/xonsh-wrapped.nix
+      ../../modules/overlays/hilbish.nix
 
     ];
 

@@ -35,10 +35,10 @@ let
     meta = with pkgs.lib; {
       description = "Interactive Unix-like shell written in Go";
       mainProgram = "hilbish";
-      changelog = "https://github.com/Rosettea/Hilbish/releases/tag/v${version}";
-      homepage = "https://github.com/Rosettea/Hilbish";
+    #  changelog = "https://github.com/Rosettea/Hilbish/releases/tag/v${version}";
+    #  homepage = "https://github.com/Rosettea/Hilbish";
       maintainers = with pkgs.maintainers; [ "moni" ];
-      license = pkgs.licenses.mit;
+   #   license = pkgs.licenses.mit;
     };
   };
 in
