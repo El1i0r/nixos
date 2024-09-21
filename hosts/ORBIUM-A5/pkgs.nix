@@ -176,7 +176,7 @@ environment.systemPackages = with pkgs; [
     qemu
     steam
     themix-gui
-    thunar
+    xfce.thunar
     tree
     upower
     wine-wow
