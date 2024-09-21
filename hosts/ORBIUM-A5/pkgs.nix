@@ -157,30 +157,30 @@ environment.systemPackages = with pkgs; [
     pkgs.tym
     tmux
     tmuxPlugins.gruvbox
-    blackbox-0.14.0
-    feh-3.10.2
-    flavours-0.7.1
-    freetype-2.13.2
-    gcc-wrapper-13.2.0
-    gimp-2.10.38
-    glib-2.80.2
-    inkscape-1.3.2
-    libnotify-0.8.3
-    libotf-0.9.16
-    libvirt-10.0.0
-    lutgen-0.10.1
-    lutris-unwrapped-0.5.16
+    blackbox-terminal
+    feh
+    flavours
+    freetype
+    gcc-wrapper
+    gimp
+    glib
+    inkscape
+    libnotify
+    libotf
+    libvirt
+    lutgen
+    lutris-unwrapped
     jdk
-    pcmanfm-1.3.2
-    playerctl-2.4.1
-    qemu-8.2.6
+    pcmanfm
+    playerctl
+    qemu
     steam
-    themix-gui-1.15.1
-    thunar-4.18.10
-    tree-2.1.1
-    upower-1.90.4
-    wine-wow-9.9
-    xcursorgen-1.0.8
+    themix-gui
+    thunar
+    tree
+    upower
+    wine-wow
+    xcursorgen
     # prepare for death
     (picom.overrideAttrs (oldAttrs: rec {
       src = fetchFromGitHub {
