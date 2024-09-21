@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 let
-  hilbish = import ../../modules/overlays/hilbish.nix { inherit pkgs lib; };
+  hilbish = import ../../modules/overlays/hilbish.nix { inherit pkgs; };
 in
 {
   environment.systemPackages = with pkgs; [

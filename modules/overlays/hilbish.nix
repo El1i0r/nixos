@@ -1,4 +1,4 @@
-{ lib, buildGoModule, fetchFromGitHub }:
+{ buildGoModule, fetchFromGitHub }:
 
 buildGoModule rec {
   pname = "hilbish";
@@ -29,13 +29,4 @@ buildGoModule rec {
     cp -r libs -t $out/share/hilbish/
     cp -r nature $out/share/hilbish/
   '';
-
-  meta = with lib; {
-    description = "Interactive Unix-like shell written in Go";
-    mainProgram = "hilbish";
-    #changelog = "https://github.com/Rosettea/Hilbish/releases/tag/${version}";
-    homepage = "https://github.com/Rosettea/Hilbish";
-    maintainers = with maintainers; [ el1i0r ];
-    license = licenses.mit;
-  };
 }
