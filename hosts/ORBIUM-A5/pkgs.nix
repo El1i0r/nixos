@@ -180,7 +180,7 @@ environment.systemPackages = with pkgs; [
     tree
     upower
     wineWow64Packages.full
-    xcursorgen
+   ## xcursorgen
     # prepare for death
     (picom.overrideAttrs (oldAttrs: rec {
       src = fetchFromGitHub {
