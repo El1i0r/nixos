@@ -2,13 +2,13 @@
 
 let
   hilbish = pkgs.buildGoModule rec {
-    pname = "hilbish";
-    version = "2.3.2";
+    pname = "hilbish-git";
+    version = "master";
 
     src = pkgs.fetchFromGitHub {
       owner = "Rosettea";
       repo = "Hilbish";
-      rev = "v${version}";
+      rev = "${version}";
       hash = "sha256-bCV9hiTvtkdEMPEn9r5PxB+MqJk030E5YISN8B/4h4A=";
       fetchSubmodules = true;
     };
@@ -44,7 +44,7 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    hilbish
+    hilbish-git
   ];
 }
 
