@@ -170,7 +170,7 @@ environment.systemPackages = with pkgs; [
     libvirt-10.0.0
     lutgen-0.10.1
     lutris-unwrapped-0.5.16
-    openjdk-21.0.3+9
+    jdk
     pcmanfm-1.3.2
     playerctl-2.4.1
     qemu-8.2.6
@@ -180,7 +180,7 @@ environment.systemPackages = with pkgs; [
     tree-2.1.1
     upower-1.90.4
     wine-wow-9.9
-   xcursorgen-1.0.8
+    xcursorgen-1.0.8
     # prepare for death
     (picom.overrideAttrs (oldAttrs: rec {
       src = fetchFromGitHub {
