@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  hilbish = pkgs.buildGoModule rec {
+  hilbish-git = pkgs.buildGoModule rec {
     pname = "hilbish-git";
     version = "master";
 
