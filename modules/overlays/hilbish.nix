@@ -1,44 +1,44 @@
 { config, pkgs, ... }:
 
 let
-  hilbish = pkgs.stdenv.mkDerivation {
+  hilbish = pkgs.buildGoModule rec {
     pname = "hilbish";
-    version = "master"; # Replace with the actual version
+    version = "2.3.2";
 
     src = pkgs.fetchFromGitHub {
       owner = "Rosettea";
-      repo = "hilbish";
-      rev = "master"; # Replace with the specific commit or tag if needed
-      sha256 = "sha256-bCV9hiTvtkdEMPEn9r5PxB+MqJk030E5YISN8B/4h4A="; # Replace with the actual hash
+      repo = "Hilbish";
+      rev = "v${version}";
+      hash = "sha256-bCV9hiTvtkdEMPEn9r5PxB+MqJk030E5YISN8B/4h4A=";
+      fetchSubmodules = true;
     };
 
-    nativeBuildInputs = with pkgs; [
-      cmake
-      gcc
+    subPackages = [ "." ];
+
+    vendorHash = "sha256-v5YkRZA8oOKwXa6yFGQ33jKEc742zIrmJ0+w8ggmu/0=";
+
+    ldflags = [
+      "-s"
+      "-w"
+      "-X main.dataDir=${placeholder "out"}/share/hilbish"
     ];
 
-    buildInputs = with pkgs; [
-      lua
-      readline
-    ];
+    postInstall = ''
+      mkdir -p "$out/share/hilbish"
 
-    buildPhase = ''
-      mkdir build
-      cd build
-      cmake ..
-      make
-    '';
-
-    installPhase = ''
-      mkdir -p $out/bin
-      cp build/hilbish $out/bin/
+      cp .hilbishrc.lua $out/share/hilbish/
+      cp -r docs -t $out/share/hilbish/
+      cp -r libs -t $out/share/hilbish/
+      cp -r nature $out/share/hilbish/
     '';
 
     meta = with pkgs.lib; {
-      description = "A shell for Lua fans";
-      homepage = "https://github.com/Rosettea/hilbish";
-      license = licenses.mit;
-      maintainers = with maintainers; [ el1i0r ];
+      description = "Interactive Unix-like shell written in Go";
+      mainProgram = "hilbish";
+      changelog = "https://github.com/Rosettea/Hilbish/releases/tag/v${version}";
+      homepage = "https://github.com/Rosettea/Hilbish";
+      maintainers = with pkgs.maintainers; [ "moni" ];
+      license = pkgs.licenses.mit;
     };
   };
 in
