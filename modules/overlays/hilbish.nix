@@ -6,10 +6,10 @@ let
     version = "master"; # Replace with the actual version
 
     src = pkgs.fetchFromGitHub {
-      owner = "Rosetta";
+      owner = "Rosettea";
       repo = "hilbish";
       rev = "master"; # Replace with the specific commit or tag if needed
-      sha256 = "0v1h8z6k3m4l5n7p8q9r2s3t4u5v6w7x8y9z0a1b2c3d4e5f6g7h8i9j0k1l2m3n"; # Replace with the actual hash
+      sha256 = "sha256-bCV9hiTvtkdEMPEn9r5PxB+MqJk030E5YISN8B/4h4A="; # Replace with the actual hash
     };
 
     nativeBuildInputs = with pkgs; [
@@ -36,7 +36,7 @@ let
 
     meta = with pkgs.lib; {
       description = "A shell for Lua fans";
-      homepage = "https://github.com/Rosetta/hilbish";
+      homepage = "https://github.com/Rosettea/hilbish";
       license = licenses.mit;
       maintainers = with maintainers; [ el1i0r ];
     };
