@@ -179,7 +179,7 @@ environment.systemPackages = with pkgs; [
     xfce.thunar
     tree
     upower
-    wine-wow
+    wineWow64Packages.full
     xcursorgen
     # prepare for death
     (picom.overrideAttrs (oldAttrs: rec {
