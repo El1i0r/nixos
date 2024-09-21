@@ -161,7 +161,7 @@ environment.systemPackages = with pkgs; [
     feh
     flavours
     freetype
-    gcc-wrapper
+    libgcc
     gimp
     glib
     inkscape
