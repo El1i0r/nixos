@@ -1,32 +1,50 @@
-{ buildGoModule, fetchFromGitHub }:
+{ config, pkgs, ... }:
 
-buildGoModule rec {
-  pname = "hilbish";
-  version = "master";
+let
+  hilbish = pkgs.stdenv.mkDerivation {
+    pname = "hilbish";
+    version = "master"; # Replace with the actual version
 
-  src = fetchFromGitHub {
-    owner = "Rosettea";
-    repo = "Hilbish";
-    rev = "${version}";
-    hash = "sha256-bCV9hiTvtkdEMPEn9r5PxB+MqJk030E5YISN8B/4h4A=";
-    fetchSubmodules = true;
+    src = pkgs.fetchFromGitHub {
+      owner = "Rosetta";
+      repo = "hilbish";
+      rev = "master"; # Replace with the specific commit or tag if needed
+      sha256 = "0v1h8z6k3m4l5n7p8q9r2s3t4u5v6w7x8y9z0a1b2c3d4e5f6g7h8i9j0k1l2m3n"; # Replace with the actual hash
+    };
+
+    nativeBuildInputs = with pkgs; [
+      cmake
+      gcc
+    ];
+
+    buildInputs = with pkgs; [
+      lua
+      readline
+    ];
+
+    buildPhase = ''
+      mkdir build
+      cd build
+      cmake ..
+      make
+    '';
+
+    installPhase = ''
+      mkdir -p $out/bin
+      cp build/hilbish $out/bin/
+    '';
+
+    meta = with pkgs.lib; {
+      description = "A shell for Lua fans";
+      homepage = "https://github.com/Rosetta/hilbish";
+      license = licenses.mit;
+      maintainers = with maintainers; [ el1i0r ];
+    };
   };
-  subPackages = [ "." ];
-
-  vendorHash = "sha256-v5YkRZA8oOKwXa6yFGQ33jKEc742zIrmJ0+w8ggmu/0=";
-
-  ldflags = [
-    "-s"
-    "-w"
-    "-X main.dataDir=${placeholder "out"}/share/hilbish"
+in
+{
+  environment.systemPackages = with pkgs; [
+    hilbish
   ];
-
-  postInstall = ''
-    mkdir -p "$out/share/hilbish"
-
-    cp .hilbishrc.lua $out/share/hilbish/
-    cp -r docs -t $out/share/hilbish/
-    cp -r libs -t $out/share/hilbish/
-    cp -r nature $out/share/hilbish/
-  '';
 }
+
